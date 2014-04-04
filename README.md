@@ -1,7 +1,7 @@
 uwsgi-riemann
 =============
 
-(work in progress)
+(WORK IN PROGRESS, only the stats pusher is implemented)
 
 uWSGI plugin for riemann (http://riemann.io) integration
 
