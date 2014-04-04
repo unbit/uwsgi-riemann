@@ -1,6 +1,8 @@
 uwsgi-riemann
 =============
 
+(work in progress)
+
 uWSGI plugin for riemann (http://riemann.io) integration
 
 It implements:
@@ -49,3 +51,20 @@ UWSGI_EMBED_PLUGINS="riemann=https://github.com/unbit/uwsgi-riemann" gem install
 ```
 
 and so on...
+
+Using it
+========
+
+Once loaded it register a stats-pusher, an alarm action and a hook.
+
+For pushing stats to the reimann server 192.168.173.22:5555
+
+just use
+
+```ini
+[uwsgi]
+plugin = reimann
+enable-metrics = true
+stats-push = reimann:192.168.173.22:5555
+...
+```
