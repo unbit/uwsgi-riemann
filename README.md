@@ -57,14 +57,14 @@ Using it
 
 Once loaded it register a stats-pusher, an alarm action and a hook.
 
-For pushing stats to the reimann server 192.168.173.22:5555
+For pushing stats to the riemann server 192.168.173.22:5555
 
 just use
 
 ```ini
 [uwsgi]
-plugin = reimann
+plugin = riemann
 enable-metrics = true
-stats-push = reimann:192.168.173.22:5555
+stats-push = riemann:192.168.173.22:5555
 ...
 ```
