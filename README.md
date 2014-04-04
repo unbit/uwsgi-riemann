@@ -1,7 +1,7 @@
 uwsgi-riemann
 =============
 
-uWSGI plugin for riemann integration
+uWSGI plugin for riemann (http://riemann.io) integration
 
 It implements:
 
