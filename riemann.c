@@ -74,8 +74,8 @@ static void stats_pusher_riemann(struct uwsgi_stats_pusher_instance *uspi, time_
 		struct riemann_config *rc = uwsgi_calloc(sizeof(struct riemann_config));
 		rc->host = uwsgi.hostname;
 		rc->host_len = uwsgi.hostname_len;
-		char *node = uspi->arg;
-		if (!strchr(uspi->arg, '=')) {	
+		char *node = NULL;
+		if (strchr(uspi->arg, '=')) {	
 			if (uwsgi_kvlist_parse(uspi->arg, strlen(uspi->arg), ',', '=',
 				"addr", &node,
 				"node", &node,
@@ -85,6 +85,13 @@ static void stats_pusher_riemann(struct uwsgi_stats_pusher_instance *uspi, time_
 				exit(1);
 			}
 			if (rc->host) rc->host_len = strlen(rc->host);
+		}
+		else {
+			node = uspi->arg;
+		}
+		if (!node) {
+			uwsgi_log("[uwsgi-riemann] you need to specify an address\n");
+			exit(1);
 		}
 		char *colon = strchr(node, ':');
 		if (!colon) {
